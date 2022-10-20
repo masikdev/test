@@ -1,0 +1,251 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #426696;
+    font-weight: 600;
+    font-size: 3rem;
+    opacity: 0.8;
+}
+
+h2, p {
+    color: #658ec6;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a.btn {
+    text-decoration: none;
+    color: #658ec6;
+}
+
+a.btn:hover {
+    color: #4068a1;
+}
+
+h3 {
+    color: #426696;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+main {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh; 
+    /* Untuk mengatur minimum tinggi dari sebuah objek. */
+    /* Satuan vh dan vw (viewport height dan viewport width) hampir sama dengan satuan persen (%), hanya saja % tidak bisa menentukan height. */
+
+    /* Jadi 100vh itu berarti mengambil space dari monitor sebesar 100% */
+    background: linear-gradient(to right top, #65dfc9, #6cdbeb); /* linier-gradient yaitu me-mix 2 color */
+    /* to right top = diagonal dari kiri bawah ke pojok kanan atas,
+       to right = mengarah dari kiri ke kanan, jika ditambahkan top berarti dia mengarahnya ke atas.
+       to left = dari kanan ke kiri. dst
+    */
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+    /* untuk melihat perbedaan align-items dan align-content
+    https://www.w3schools.com/cssref/playdemo.asp?filename=playcss_align-content
+    https://www.w3schools.com/cssref/playdemo.asp?filename=playcss_align-items
+
+    align content sifatnya adalah style yang memenuhi layar, dan yang memenuhi layar tsb adalah semua class di dalam tag bersangkutan. CMIIW
+    */
+}
+
+.glass {
+    background: white;
+    min-height: 80vh; /* Mengambil 80% dari layar tiap user */
+    width: 60%;
+    background: linear-gradient(
+        to right bottom, 
+        rgba(255, 255, 255, 0.7), 
+        rgba(255, 255, 255, 0.3)
+    );
+    /* border: #ffffff solid 1px; */
+    border-radius: 2rem; /* 2rem */
+    z-index: 3; /* Semakin besar nilainya, semakin dia forward (maju) */
+    /* z-index berfungsi untuk layering (letak layer) default adalah 1 
+    jika terdapat Objek A dan objek B, kemudian z-index B adalh 5 dan z-index A adalah 4, maka B akan berada atau menutupi objek A
+    */
+    backdrop-filter: blur(2rem); /* Memberikan efek blur terhadap elemen yang berada di belakangnya */
+    display: flex;
+}
+
+.circle1,.circle2 {
+    background-color: white;
+    background: linear-gradient(
+        to right bottom, 
+        rgba(255, 255, 255, 0.8), /* Warna dari kiri atas */
+        rgba(255, 255, 255, 0.3) /* Warna ketika dia nyampe kanan bawah */
+    );
+    height: 20rem;
+    width: 20rem;
+    position: absolute; /* jika posisi absolute, kita bebas untuk memindahkan objek ini kemanapun manual */
+    /* top, bottom, left, right ketika digunakan dia akan mem-push objek dari sisi-sisi tsb. E.g top: 5%, objek 
+    tsb akan diletakkan dgn jarak 5% dari bagian atas dari layar */
+    border-radius: 50%; /* Agar content yang berbentuk kotak menjadi lingkaran */
+}
+
+.circle1 {
+    top: 5%; /* Perbedaan top dan margin-top */
+    right: 15%;
+}
+
+.circle2 {
+    bottom: 5%;
+    left: 10%;
+}
+
+.dashboard {
+    flex: 1; /* Conten dashboard akan mengambil semua space dari kiri hingga memojokkan konten setelahnya ke paling pojok */
+    /* background: black;  untuk pengetesan */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /*
+    perbedaan align item dan aling content:border: https://sekolahkoding.com/forum/perbedaan-antara-align-item-dan-align-content-1600477652
+    */
+    text-align: center;
+    /*
+    Tanpa code display: flex dan flex-direction: column, tampilan dari content yang ada di dashboard sudah vertical.
+    Hal ini dikarenakan kita tidak bisa menambahkan align-items dan justify-content jika display nya tidak flex.
+    */
+    background: linear-gradient(
+        to right bottom, 
+        rgba(255, 255, 255, 0.7), 
+        rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 2rem;
+}
+
+ /* Jika didalam satu tag terdapat konten-konten dalam tag dan tiap tag konten tersebut memiliki flex, maka konten-konten tersebut akan berbagi tempat sesuai dengan nilai flexnya. E.g flex di dashboard dan games = 1, maka mereka akan sharing space 1/2 1/2 */ 
+
+.link {
+    display: flex;
+    margin: 2rem 0rem;
+    padding: 0.5rem 5rem;
+    align-items: center;
+}
+
+.link h2 {
+    padding: 0rem 2rem;
+}
+
+.pro {
+    background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+    border-radius: 2rem;
+    color: white;
+    padding: 1rem;
+    display: flex;    
+    position: relative;
+     /* Agar div pro img ketika posisinya adalah absolute, posisinya akan menyesuaikan di dalam tag ini. Karena jika tidak diberi position relative dia akan mengambil seluruh layar */
+}
+
+.games {
+    flex: 2;
+}
+
+.pro img {
+    top: -10%;
+    right: 10%;
+    position: absolute;
+}
+
+.pro h2 {
+    width: 40%;
+    font-weight: 600;
+    color: white;
+}
+
+/* GAMES */
+
+.status {
+    margin-bottom: 3rem;
+}
+
+.status input {
+    background: linear-gradient(
+        to right bottom, 
+        rgba(255, 255, 255, 0.7), 
+        rgba(255, 255, 255, 0.3)
+    );
+    border: none;
+    width: 50%;
+    padding: 0.5rem;
+    border-radius: 2rem;
+}
+
+.games {
+    margin: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.card {
+    display: flex;
+    background: linear-gradient(
+        to left top, 
+        rgba(255, 255, 255, 0.8),  
+        rgba(255, 255, 255, 0.2)
+    );
+    border-radius: 2rem;
+    margin: 2rem 0rem; /* Top, Bottom = 2rem, Left, Right = 0rem */
+    padding: 2rem;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.2); 
+    
+    justify-content: space-between;
+    /* justify-content: flex-start; mine*/
+    /* 
+    6px, 6px represents posisi shadow X dan Y*. 20px represents the amount of blur.  
+    If you want it to be more blurry. Tambahkan dengan warna keinginan menggunakan RGBA
+    */
+}
+
+/* .card img {
+    margin: 0 2rem 0 0.1rem;
+} */
+
+
+.progress {
+    background: linear-gradient(
+        to right top, 
+        #65dfc9, 
+        #6cdbeb
+    );
+    width: 100%;
+    height: 25%;
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden; /* Agar grey bar not leaves this section */
+}
+
+.progress::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgb(236, 236, 236);
+    position: absolute;
+    left: 60%;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.percentage {
+    /* margin-left: auto; */ 
+    float: left;
+    font-weight: bold;
+    /* background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    /* Agar text dari percentage ini mengambil warna dari backgroundya, atau jika di potoshop adalah clipping mask*/
+}
